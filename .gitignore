@@ -1,14 +1,14 @@
 # Node.js (backend)
-backend/node_modules/
-server/.env
-backend/dist/
+angular-nodejs-ecommerce-project/server/node_modules/
+angular-nodejs-ecommerce-project/server/.env
+angular-nodejs-ecommerce-project/server/dist/
 
 # Angular (frontend)
-client/node_modules/
-client/dist/
-client/.angular/cache/
-frontend/src/environments/environment.prod.ts
-frontend/src/environments/environment.ts
+angular-nodejs-ecommerce-project/client/node_modules/
+angular-nodejs-ecommerce-project/client/dist/
+angular-nodejs-ecommerce-project/client/.angular/cache/
+angular-nodejs-ecommerce-project/client/src/environments/environment.prod.ts
+angular-nodejs-ecommerce-project/client/src/environments/environment.ts
 
 # OS/system files
 .DS_Store
