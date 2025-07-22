@@ -7,7 +7,7 @@ import Order from '../models/Order.mjs';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const createCheckoutSession = catchAsync(async (req, res, next) => {
-  console.log("✅ Received req.body:", req.body);
+  console.log(" Received req.body:", req.body);
 
   const { items } = req.body;
 
@@ -17,12 +17,12 @@ export const createCheckoutSession = catchAsync(async (req, res, next) => {
 
   const lineItems = items.map(item => ({
     price_data: {
-      currency: 'usd', // Change to 'inr' if using Indian account
+      currency: 'usd', 
       product_data: {
         name: item.name,
         images: item.image ? [item.image] : [],
       },
-      unit_amount: Math.round(item.price * 100), // Convert dollars to cents
+      unit_amount: Math.round(item.price * 100), 
     },
     quantity: item.quantity,
   }));
