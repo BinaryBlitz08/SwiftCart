@@ -14,17 +14,17 @@ export class UserServiceService {
 
   constructor(private http: HttpClient,private countService: CountService) {}
 
-  // Define the login method
+ 
   login(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, data).pipe(
-      // Handle any errors
+     
       catchError(this.handleError)
     );
   }
-  // Define the register method
+
   signup(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup`, data).pipe(
-      // Handle any errors
+    
       catchError(this.handleError)
     );
   }
@@ -40,7 +40,7 @@ export class UserServiceService {
     );
   }
 
-  // Reset password with the provided reset token
+ 
   resetPassword(newPassword: string, resetToken: string): Observable<any> {
     const data = {
       password: newPassword,
@@ -66,24 +66,19 @@ export class UserServiceService {
     catchError(this.handleError)
   );
 }
-/*************  ✨ Windsurf Command 🌟  *************/
-  /**
-   * Add a product to the user's cart
-   * @param data The ID of the product to add
-   * @returns An observable of the updated cart
-   */
+
   addCart(data: string): Observable<any> { 
     const token = localStorage.getItem('token');
     console.log('id ' + data);
     const product = { productId: data };
     return this.http.post(`${this.apiUrl}/cart`, product).pipe(
-      // Handle any errors
+      
       catchError(this.handleError),
       tap((response: any) => {
-      // Extract cart length (adjust path depending on response shape)
+    
       const cartLength = response?.user?.carts?.length ?? 0;
 
-      // ✅ Set new count in CountService
+    
       this.countService.setProduct(cartLength);
     })
     );
@@ -92,14 +87,11 @@ export class UserServiceService {
   return this.http.post(`${this.apiUrl}/cart/clear`, {}).pipe(
     catchError(this.handleError),
     tap(() => {
-      this.countService.setProduct(0); // Reset cart count
+      this.countService.setProduct(0); 
     })
   );
 }
-  /**
-   * Get the user's cart
-   * @returns An observable of the user's cart
-   */
+ 
   getCart(): Observable<any> {
     const token = localStorage.getItem('token');
     console.log('Fetching cart');
@@ -147,17 +139,17 @@ export class UserServiceService {
 }
 
   
-  // Error handling function
+
   private handleError(error: HttpErrorResponse) {
-    // Handle different types of errors
+  
     if (error.error instanceof ErrorEvent) {
-      // Client-side error
+   
       console.error('Client-side error:', error.error.message);
     } else {
-      // Server-side error
+   
       console.error(`Server-side error: ${error.status} - ${error.message}`);
     }
-    // Return an observable with an error message
+   
     return throwError(
       `An error occurred while trying to Handle request Please try again later.`
     );
