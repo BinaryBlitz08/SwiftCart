@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Product from "../models/Product.mjs";
 
-// Example product data
+
 const products = [
  
   {
@@ -360,7 +360,7 @@ const products = [
 
 const seedProducts = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/ecommerce");
+    await mongoose.connect("mongodb+srv://binaryblitz08:mauli@cluster0.byuduhy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
     await Product.deleteMany();
     await Product.insertMany(products);
     console.log(" Products seeded successfully!");
