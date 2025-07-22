@@ -3,26 +3,26 @@ import mongoose from "mongoose";
 const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Product name is required"], // Custom error message
+    required: [true, "Product name is required"], 
     unique: true,
-    trim: true, // Trim whitespace from beginning and end
+    trim: true, 
   },
   price: {
     type: Number,
     required: [true, "Product price is required"],
-    min: [0, "Product price must be 0 or greater"], // Ensure non-negative price
+    min: [0, "Product price must be 0 or greater"], 
   },
   stock: {
     type: Number,
     required: [true, "Product stock is required"],
-    min: [0, "Product stock must be 0 or greater"], // Ensure non-negative stock
+    min: [0, "Product stock must be 0 or greater"], 
     validate: {
       validator: Number.isInteger,
       message: "{VALUE} is not an integer value",
-    }, // Ensure stock is an integer
+    }, 
   },
   images: {
-    type: [String], // Ensure at least one image URL is provided
+    type: [String], 
   },
    category: {
     type: String,
